@@ -1,0 +1,6 @@
+[build]
+type         = "autoconf"   # or "cmake", "meson", "custom"
+dependencies = ["gcc", "make"]
+configure    = "./configure --prefix=/usr/local"
+compile      = "make -j{cores}"
+install      = "make DESTDIR={stagedir} install"

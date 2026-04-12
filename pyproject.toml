@@ -1,0 +1,7 @@
+[project]
+name = "sawn1c"
+version = "0.1.0"
+description = "The missing package manager that can build"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
