@@ -4,7 +4,7 @@ import tomllib
 import platform
 
 system = platform.system()
-if system not in ("linux", "darwin"):
+if system not in ("Linux", "Darwin"):
     print("Sawn1c is only supported on Linux and macOS.")
     sys.exit(1)
 
