@@ -12,7 +12,3 @@ def build(name: str, author: str):
         cli.error(
             f"Package {name} by {author} requires a valid author (to specify the package)"
         )
-    elif name not in url or name == "":
-        cli.error(
-            f"Package {name} by {author} requires a valid name (to specify the package)"
-        )
