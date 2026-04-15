@@ -20,6 +20,7 @@ subprocess.run(["touch", "sawn1c.toml"])
 
 commands = {
     "install": cli.install,
+    "uninstall": cli.uninstall,
 }
 
 flags = {
