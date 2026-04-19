@@ -1,6 +1,4 @@
 from asyncio import subprocess
-import os
-import sys
 import requests
 import tomllib
 import zipfile
@@ -9,6 +7,7 @@ import security
 
 
 REGISTRY_BASE = "https://raw.githubusercontent.com/sawn1c-repos/registry/main/packages"
+
 
 def install(name, author):
     # 1. Pull the .toml
@@ -34,7 +33,7 @@ def install(name, author):
         print("Done.")
         subprocess.run(["touch", "installedpkgs.toml"])
         with open("installedpkgs.toml", "a") as f:
-            f.write(f"{name} = \"{meta['package']['version']}\"\n")
+            f.write(f'{name} = "{meta["package"]["version"]}"\n')
 
     def uninstall(name, author):
         # 1. Pull the .toml
@@ -45,7 +44,7 @@ def install(name, author):
             return
 
         # 2. Parse it
-        meta = tomllib.loads(res.text)
+        meta = tomllib.loads(res.text)  # noqa: F841
 
         # 3. Remove the package
         subprocess.run(["rm", "-rf", f"./installed/{name}"])

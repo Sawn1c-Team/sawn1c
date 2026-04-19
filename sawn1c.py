@@ -1,18 +1,17 @@
 import sys
 import subprocess
-import tomllib
 import platform
+
+# Add the current directory to the path so we can import src
+sys.path.insert(0, ".")
+
+from src import cli  # noqa: E402
+from src.compilengine import build  # noqa: E402
 
 system = platform.system()
 if system not in ("Linux", "Darwin"):
     print("Sawn1c is only supported on Linux and macOS.")
     sys.exit(1)
-
-# Add the current directory to the path so we can import src
-sys.path.insert(0, ".")
-
-from src import cli
-from src.compilengine import build
 
 print("Welcome to Sawn1c! Type 'sawn1c help' for available commands.")
 

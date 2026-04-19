@@ -1,5 +1,4 @@
 import platform
-import os
 
 def get_arch():
     machine = platform.machine().lower()
