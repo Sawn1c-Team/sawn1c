@@ -4,3 +4,11 @@ dependencies = ["gcc", "make"]
 configure    = "./configure --prefix=/usr/local"
 compile      = "make -j{cores}"
 install      = "make DESTDIR={stagedir} install"
+source_mirror=["source.mirror.link", "diffrent.mirror.link"]
+
+[security]
+opengpg      = "(filename of the gpg key you provide on the repos github repo)"
+sha256       = "(filename of the sha256 key for binaries/source .tar.xz to prove file is valid)
+
+[binaries]
+binary_mirror=["binary.mirror.link", "another.binary.mirror.link"]  
