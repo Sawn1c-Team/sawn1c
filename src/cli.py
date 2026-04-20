@@ -3,7 +3,7 @@ import requests
 import tomllib
 import zipfile
 import io
-import security
+from . import security
 
 
 REGISTRY_BASE = "https://raw.githubusercontent.com/sawn1c-repos/registry/main/packages"

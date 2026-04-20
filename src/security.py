@@ -4,7 +4,8 @@ import tomllib
 import os
 import subprocess
 import shutil
-from cli import REGISTRY_BASE
+
+REGISTRY_BASE = "https://raw.githubusercontent.com/sawn1c-repos/registry/main/packages"
 
 
 def opengpg_check(name: str, author: str) -> bool:
