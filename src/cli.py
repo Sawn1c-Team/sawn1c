@@ -35,26 +35,27 @@ def install(name, author):
         with open("installedpkgs.toml", "a") as f:
             f.write(f'{name} = "{meta["package"]["version"]}"\n')
 
-    def uninstall(name, author):
-        # 1. Pull the .toml
-        url = f"{REGISTRY_BASE}/{author}/{name}.toml"
-        res = requests.get(url)
-        if res.status_code != 200:
-            print(f"Package '{name}' not found.")
-            return
 
-        # 2. Parse it
-        meta = tomllib.loads(res.text)  # noqa: F841
+def uninstall(name, author):
+    # 1. Pull the .toml
+    url = f"{REGISTRY_BASE}/{author}/{name}.toml"
+    res = requests.get(url)
+    if res.status_code != 200:
+        print(f"Package '{name}' not found.")
+        return
 
-        # 3. Remove the package
-        subprocess.run(["rm", "-rf", f"./installed/{name}"])
+    # 2. Parse it
+    meta = tomllib.loads(res.text)  # noqa: F841
 
-        # 4. Remove from installedpkgs.toml
-        with open("installedpkgs.toml", "r") as f:
-            lines = f.readlines()
-        with open("installedpkgs.toml", "w") as f:
-            for line in lines:
-                if not line.startswith(f"{name} ="):
-                    f.write(line)
+    # 3. Remove the package
+    subprocess.run(["rm", "-rf", f"./installed/{name}"])
 
-        print("Done.")
+    # 4. Remove from installedpkgs.toml
+    with open("installedpkgs.toml", "r") as f:
+        lines = f.readlines()
+    with open("installedpkgs.toml", "w") as f:
+        for line in lines:
+            if not line.startswith(f"{name} ="):
+                f.write(line)
+
+    print("Done.")
