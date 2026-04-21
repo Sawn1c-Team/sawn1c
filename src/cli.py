@@ -1,4 +1,4 @@
-from asyncio import subprocess
+import subprocess
 import requests
 import tomllib
 import zipfile
@@ -7,6 +7,10 @@ from . import security
 
 
 REGISTRY_BASE = "https://raw.githubusercontent.com/sawn1c-repos/registry/main/packages"
+
+
+def error(msg: str) -> None:
+    print(f"Error: {msg}")
 
 
 def install(name, author):

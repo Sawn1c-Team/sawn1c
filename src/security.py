@@ -32,8 +32,8 @@ def opengpg_check(name: str, author: str) -> bool:
 
     sha256_hash = hashlib.sha256()
     with open(target_file, "rb") as f:
-        for byte_block in iter(lambda: f.read(4096), b""):
-            sha256_hash.update(byte_block)
+        while chunk := f.read(4096):
+            sha256_hash.update(chunk)
 
     if sha256_hash.hexdigest() != expected_hash:
         return False
